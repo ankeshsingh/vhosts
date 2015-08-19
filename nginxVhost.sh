@@ -21,7 +21,7 @@ if [ ! -d "$ROOT_PATH" ];
 			index index.html index.htm index.php;
 
 			# Make site accessible from domain
-			server_name '$HOST_NAME'.localhost;
+			server_name localhost.'$HOST_NAME';
 
 			location / {
 				if (-f $request_filename) {
