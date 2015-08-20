@@ -1,7 +1,7 @@
 #To setup your project with nginx server in a single command.
 Shell script for creating required virtual hosts with nginx server in single command
 
-This shell script will configure your project with nginx server and creat a vertual host for your project.
+This shell script will configure your project with nginx server and create a vertual host for your project.
 Steps to exexute the command.
 
 Step1: Download nginxVhost.sh file.
