@@ -35,10 +35,6 @@ if [ ! -d "$ROOT_PATH" ];
 			server_name localhost.'$HOST_NAME';
 
 			location / {
-				if (-f $request_filename) {
-				        rewrite ^/(.+)$ /index.php?url=$1 last;
-				        break;
-				}
 				# First attempt to serve request as file, then
 				# as directory, then fall back to displaying a 404.
 				try_files $uri $uri/ =404;
