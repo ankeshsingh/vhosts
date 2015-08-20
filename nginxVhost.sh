@@ -2,10 +2,21 @@
 # Author: Ankesh Singh
 # Email: ankesh.gangwar@kelltontech.com
 # Script: create virtual host for nginx
-# Eg: sh nginxVhost.sh domain_name root_path
+# Eg: sh nginxVhost.sh domain_name root_path nginx_root_path
 HOST_NAME=$1 #get hostname
 ROOT_PATH=$2 #get root path
-if [ ! -d "$ROOT_PATH" ]; 
+if [ ! -z "$3" ] #chech server path is set in arrument or not
+ then 
+    NGINX_ROOT_PATH=$3"/sites-enabled/";
+    if [ ! -d "$NGINX_ROOT_PATH" ]
+       then
+	echo "Error_code: 03\nMessage:$3 path not a valid nginx server path, please enter valid path eg: /etc/nginx/";			
+    fi
+ else
+	NGINX_ROOT_PATH="/etc/nginx/sites-enabled/";
+ fi
+
+if [ ! -d "$ROOT_PATH" ];
 	then
 	  echo "Error_code: 01\nMessage:$ROOT_PATH path not exist!";
 	else
@@ -45,7 +56,7 @@ if [ ! -d "$ROOT_PATH" ];
 				fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 				include fastcgi_params;
 			}
-		}' >> "/etc/nginx/sites-enabled/localhost.$HOST_NAME"
+		}' >> $NGINX_ROOT_PATH"localhost.$HOST_NAME"
 
 		     service nginx restart;
 		     echo "Your Created Domain name is localhost.$HOST_NAME";
