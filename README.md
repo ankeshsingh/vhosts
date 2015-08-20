@@ -12,10 +12,13 @@ Step2: Open terminal and go to download file directory.
 Step3: Execute  "sh nginxVhost.sh domain_name project_root_path nginx_root_path" command.
 
 domain_name : name of your vertual host, which you want to setup.
+
 project_root_path: root path of your project, which you want to setup. project_root_path should be a valid path.
+
 nginx_root_path: root path of nginx server, its optional for command. if your nginx root path different from "/etc/nginx/" then you must pass our custom nginx root path.
 
 Example: sh nginxVhost.sh project1 /var/www/project1 /etc/nginx/
+
 Your vertual host will be created for project1 as  "localhost.project1"
 
 Error_Code:
